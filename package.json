@@ -3,6 +3,7 @@
   "displayName": "with-functions-generator",
   "description": "Generate with-functions for class",
   "version": "1.0",
+  "icon": "logo.png",
   "engines": {
     "vscode": "^1.68.0"
   },
