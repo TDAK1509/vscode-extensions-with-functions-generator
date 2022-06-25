@@ -1,7 +1,7 @@
 {
-  "name": "builder-snippets",
-  "displayName": "builder-snippets",
-  "description": "Generate with-functions for mock class",
+  "name": "with-functions-generator",
+  "displayName": "with-functions-generator",
+  "description": "Generate with-functions for class",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.68.0"
@@ -10,13 +10,13 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:builder-snippets.generateWithFunctions"
+    "onCommand:with-functions-generator.generateWithFunctions"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "builder-snippets.generateWithFunctions",
+        "command": "with-functions-generator.generateWithFunctions",
         "title": "Generate withFunctions"
       }
     ]

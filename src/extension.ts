@@ -4,7 +4,7 @@ import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
-    "builder-snippets.generateWithFunctions",
+    "with-functions-generator.generateWithFunctions",
     async () => {
       const editor = vscode.window.activeTextEditor as vscode.TextEditor;
       const selectedTexts = getSelectedTexts(editor);

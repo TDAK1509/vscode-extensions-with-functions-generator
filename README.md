@@ -1,4 +1,4 @@
-# builder-snippets
+# with-functions-generator
 
 ## What this extension does
 
