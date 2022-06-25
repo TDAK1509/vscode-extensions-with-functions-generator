@@ -2,7 +2,7 @@
   "name": "with-functions-generator",
   "displayName": "with-functions-generator",
   "description": "Generate with-functions for class",
-  "version": "0.0.1",
+  "version": "1.0",
   "engines": {
     "vscode": "^1.68.0"
   },
