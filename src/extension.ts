@@ -11,6 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
       const position = editor.selection.active;
 
       editor?.edit(textEditorEdit => {
+        vscode.commands.executeCommand("editor.action.jumpToBracket");
         textEditorEdit.insert(position, createCodeSnippets(clipboardContent));
       });
     }
