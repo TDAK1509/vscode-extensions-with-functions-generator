@@ -8,10 +8,10 @@ export function activate(context: vscode.ExtensionContext) {
     async () => {
       const clipboardContent = await vscode.env.clipboard.readText();
       const editor = vscode.window.activeTextEditor as vscode.TextEditor;
-      const position = editor.selection.active;
+      await vscode.commands.executeCommand("editor.action.jumpToBracket");
 
       editor?.edit(textEditorEdit => {
-        vscode.commands.executeCommand("editor.action.jumpToBracket");
+        const position = editor.selection.active;
         textEditorEdit.insert(position, createCodeSnippets(clipboardContent));
       });
     }
@@ -28,7 +28,7 @@ function createCodeSnippets(content: string) {
 	return this;
 }`;
   });
-  return codeSnippets.join("\n\n");
+  return codeSnippets.join("\n\n") + "\n";
 }
 
 function capitalizeFirstLetter(string: string) {
