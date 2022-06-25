@@ -1,5 +1,7 @@
 # with-functions-generator
 
+![gif-with-functions-generator](https://user-images.githubusercontent.com/10008800/175754883-a1e0a966-819b-4773-9169-f3108bb24089.gif)
+
 ## What this extension does
 
 Create `with-functions` for a class, usually used for mocking class for unit test.
