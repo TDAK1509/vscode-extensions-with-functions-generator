@@ -50,4 +50,4 @@ class MyModelMock {
 
 ## Contribution
 
-Please refer [CONTRIBUTION.md](CONTRIBUTION.md)
+Please refer [CONTRIBUTION.md](https://github.com/TDAK1509/vscode-extensions-with-functions-generator/blob/main/CONTRIBUTION.md)

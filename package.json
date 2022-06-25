@@ -2,7 +2,9 @@
   "name": "with-functions-generator",
   "displayName": "with-functions-generator",
   "description": "Generate with-functions for class",
-  "version": "1.0",
+  "license": "MIT",
+  "repository": "github:TDAK1509/vscode-extensions-with-functions-generator",
+  "version": "1.0.0",
   "icon": "logo.png",
   "engines": {
     "vscode": "^1.68.0"
