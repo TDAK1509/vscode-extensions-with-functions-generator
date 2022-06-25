@@ -34,10 +34,10 @@ function getSelectedTexts(editor: vscode.TextEditor): string[] {
 
 function createCodeSnippets(selectedTexts: string[]): string {
   const codeSnippets = selectedTexts.map(text => {
-    return `public with${capitalizeFirstLetter(text)}(${text}) {
-	this.${text} = ${text};
-	return this;
-}`;
+    return `	public with${capitalizeFirstLetter(text)}(${text}) {
+		this.${text} = ${text};
+		return this;
+	}`;
   });
   return codeSnippets.join("\n\n") + "\n";
 }
