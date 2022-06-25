@@ -1,6 +1,7 @@
 # with-functions-generator
 
-![gif-with-functions-generator](https://user-images.githubusercontent.com/10008800/175754883-a1e0a966-819b-4773-9169-f3108bb24089.gif)
+https://user-images.githubusercontent.com/10008800/175754932-80503d62-77b5-4e90-8039-8075e30e83ea.mp4
+
 
 ## What this extension does
 
