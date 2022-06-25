@@ -6,6 +6,7 @@
   "repository": "github:TDAK1509/vscode-extensions-with-functions-generator",
   "version": "1.0.0",
   "icon": "logo.png",
+  "publisher": "tdak1509",
   "engines": {
     "vscode": "^1.68.0"
   },
