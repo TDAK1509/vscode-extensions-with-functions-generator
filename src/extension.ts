@@ -6,13 +6,13 @@ export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
     "builder-snippets.helloWorld",
     async () => {
-      const clipboardContent = await vscode.env.clipboard.readText();
       const editor = vscode.window.activeTextEditor as vscode.TextEditor;
+      const selectedTexts = getSelectedTexts(editor);
       await vscode.commands.executeCommand("editor.action.jumpToBracket");
 
       editor?.edit(textEditorEdit => {
         const position = editor.selection.active;
-        textEditorEdit.insert(position, createCodeSnippets(clipboardContent));
+        textEditorEdit.insert(position, createCodeSnippets(selectedTexts));
       });
     }
   );
@@ -20,9 +20,19 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(disposable);
 }
 
-function createCodeSnippets(content: string) {
-  const contentByNewLine = content.split("\n");
-  const codeSnippets = contentByNewLine.map(text => {
+function getSelectedTexts(editor: vscode.TextEditor): string[] {
+  const selectedTexts: string[] = [];
+
+  editor.selections.forEach(selection => {
+    const text = editor.document.getText(selection);
+    selectedTexts.push(text);
+  });
+
+  return selectedTexts;
+}
+
+function createCodeSnippets(selectedTexts: string[]): string {
+  const codeSnippets = selectedTexts.map(text => {
     return `public with${capitalizeFirstLetter(text)}(${text}) {
 	this.${text} = ${text};
 	return this;
