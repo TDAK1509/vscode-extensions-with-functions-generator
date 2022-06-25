@@ -47,3 +47,7 @@ class MyModelMock {
 - Hold `Alt` and `double-click` each private variable to multi-select them.
 - Press `Ctrl + Shift + P` to open the command palette.
 - Type `Generate withFunctions` and press `Enter`.
+
+## Contribution
+
+Please refer [CONTRIBUTION.md](CONTRIBUTION.md)
