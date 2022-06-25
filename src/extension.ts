@@ -12,6 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       editor?.edit(textEditorEdit => {
         const position = editor.selection.active;
+        textEditorEdit.insert(position, "\n");
         textEditorEdit.insert(position, createCodeSnippets(selectedTexts));
       });
     }
