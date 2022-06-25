@@ -1,70 +1,46 @@
-# builder-snippets README
+# builder-snippets
 
-This is the README for your extension "builder-snippets". After writing up a brief description, we recommend including the following sections.
+## What this extension does
 
-## Features
+Create `with-functions` for a class, usually used for mocking class for unit test.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+**Original**
 
-For example if there is an image subfolder under your extension project workspace:
+```ts
+class MyModelMock {
+  private id = 1;
+  private name = "Michael Jackson";
+  private email = "test@gmail.com";
+}
+```
 
-\!\[feature X\]\(images/feature-x.png\)
+**After**
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+```ts
+class MyModelMock {
+  private id = 1;
+  private name = "Michael Jackson";
+  private email = "test@gmail.com";
 
-## Requirements
+  public withId(id) {
+    this.id = id;
+    return this;
+  }
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+  public withName(name) {
+    this.name = name;
+    return this;
+  }
 
-## Extension Settings
+  public withEmail(email) {
+    this.email = email;
+    return this;
+  }
+}
+```
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## How to use
 
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- Hold `Alt` and `double-click` each private variable to multi-select them.
+- Press `Ctrl + Shift + P` to open the command palette.
+- Type `Generate withFunctions` and press `Enter`.
