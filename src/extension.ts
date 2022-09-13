@@ -41,12 +41,11 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function getSelectedTexts(editor: vscode.TextEditor): string[] {
-  let selectedTexts: string[] = [];
+  const selectedTexts: string[] = [];
 
   editor.selections.forEach(selection => {
     const text = editor.document.getText(selection);
-    const textsByNewLine = text.split("\n");
-    selectedTexts = [...textsByNewLine];
+    selectedTexts.push(text);
   });
 
   return selectedTexts;
@@ -54,22 +53,12 @@ function getSelectedTexts(editor: vscode.TextEditor): string[] {
 
 function createCodeSnippets(selectedTexts: string[]): string {
   const codeSnippets = selectedTexts.map(text => {
-    const trimmedText = removeSemiColonIfHaving(text.trim());
-
-    return `	public with${capitalizeFirstLetter(trimmedText)}(${trimmedText}) {
-		this.${trimmedText} = ${trimmedText};
+    return `	public with${capitalizeFirstLetter(text)}(${text}) {
+		this.${text} = ${text};
 		return this;
 	}`;
   });
   return codeSnippets.join("\n\n") + "\n";
-}
-
-function removeSemiColonIfHaving(str: string): string {
-  if (str.charAt(str.length - 1) === ";") {
-    return str.slice(0, -1);
-  }
-
-  return str;
 }
 
 function capitalizeFirstLetter(string: string) {
@@ -78,14 +67,10 @@ function capitalizeFirstLetter(string: string) {
 
 function createCodeSnippetsWithType(selectedTexts: string[]): string {
   const codeSnippets = selectedTexts.map(text => {
-    let variableName = text.split(":")[0];
-
-    variableName = variableName.trim();
-
     return `	public with${capitalizeFirstLetter(
-      variableName
-    )}(${variableName}: PleaseRenameThisType['${variableName}']) {
-		this.${variableName} = ${variableName};
+      text
+    )}(${text}: PleaseRenameThisType['${text}']) {
+		this.${text} = ${text};
 		return this;
 	}`;
   });
