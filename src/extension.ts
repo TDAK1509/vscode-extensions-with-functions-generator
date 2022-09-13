@@ -18,7 +18,26 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  const disposable2 = vscode.commands.registerCommand(
+    "with-functions-generator.generateWithFunctionsWithType",
+    async () => {
+      const editor = vscode.window.activeTextEditor as vscode.TextEditor;
+      const selectedTexts = getSelectedTexts(editor);
+      await vscode.commands.executeCommand("editor.action.jumpToBracket");
+
+      editor?.edit(textEditorEdit => {
+        const position = editor.selection.active;
+        textEditorEdit.insert(position, "\n");
+        textEditorEdit.insert(
+          position,
+          createCodeSnippetsWithType(selectedTexts)
+        );
+      });
+    }
+  );
+
   context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable2);
 }
 
 function getSelectedTexts(editor: vscode.TextEditor): string[] {
@@ -44,6 +63,18 @@ function createCodeSnippets(selectedTexts: string[]): string {
 
 function capitalizeFirstLetter(string: string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function createCodeSnippetsWithType(selectedTexts: string[]): string {
+  const codeSnippets = selectedTexts.map(text => {
+    return `	public with${capitalizeFirstLetter(
+      text
+    )}(${text}: PleaseRenameThisType['${text}']) {
+		this.${text} = ${text};
+		return this;
+	}`;
+  });
+  return codeSnippets.join("\n\n") + "\n";
 }
 
 export function deactivate() {}

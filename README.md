@@ -19,6 +19,8 @@ class MyModelMock {
 
 **After**
 
+1. Without type (`Generate withFunctions` command)
+
 ```ts
 class MyModelMock {
   private id = 1;
@@ -42,11 +44,36 @@ class MyModelMock {
 }
 ```
 
+2. With type (`Generate withFunctions with types` command)
+
+```ts
+class MyModelMock {
+  private id = 1;
+  private name = "Michael Jackson";
+  private email = "test@gmail.com";
+
+  public withId(id: PleaseRenameThisType['id']) {
+    this.id = id;
+    return this;
+  }
+
+  public withName(name: PleaseRenameThisType['name']) {
+    this.name = name;
+    return this;
+  }
+
+  public withEmail(email: PleaseRenameThisType['email']) {
+    this.email = email;
+    return this;
+  }
+}
+```
+
 ## How to use
 
 - Hold `Alt` and `double-click` each private variable to multi-select them.
 - Press `Ctrl + Shift + P` to open the command palette.
-- Type `Generate withFunctions` and press `Enter`.
+- Type `Generate withFunctions` or `Generate withFunctions with type` and press `Enter`.
 
 ## Contribution
 
