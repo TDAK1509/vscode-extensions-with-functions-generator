@@ -14,7 +14,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:with-functions-generator.generateWithFunctions"
+    "onCommand:with-functions-generator.generateWithFunctions",
+    "onCommand:with-functions-generator.generateWithFunctionsWithType"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -22,6 +23,10 @@
       {
         "command": "with-functions-generator.generateWithFunctions",
         "title": "Generate withFunctions"
+      },
+      {
+        "command": "with-functions-generator.generateWithFunctionsWithType",
+        "title": "Generate withFunctions with types"
       }
     ]
   },
