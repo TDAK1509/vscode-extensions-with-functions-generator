@@ -78,14 +78,13 @@ function capitalizeFirstLetter(string: string) {
 
 function createCodeSnippetsWithType(selectedTexts: string[]): string {
   const codeSnippets = selectedTexts.map(text => {
-    let [variableName, typeName] = text.split(":");
+    let variableName = text.split(":")[0];
 
     variableName = variableName.trim();
-    typeName = removeSemiColonIfHaving(typeName.trim());
 
     return `	public with${capitalizeFirstLetter(
       variableName
-    )}(${variableName}: ClassName['${typeName}']) {
+    )}(${variableName}: PleaseRenameThisType['${variableName}']) {
 		this.${variableName} = ${variableName};
 		return this;
 	}`;
