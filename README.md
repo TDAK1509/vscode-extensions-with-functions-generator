@@ -52,20 +52,20 @@ class MyModelMock {
   private name = "Michael Jackson";
   private email = "test@gmail.com";
 
-	public withId(id: PleaseRenameThisType['id']) {
-		this.id = id;
-		return this;
-	}
+  public withId(id: PleaseRenameThisType['id']) {
+    this.id = id;
+    return this;
+  }
 
-	public withName(name: PleaseRenameThisType['name']) {
-		this.name = name;
-		return this;
-	}
+  public withName(name: PleaseRenameThisType['name']) {
+    this.name = name;
+    return this;
+  }
 
-	public withEmail(email: PleaseRenameThisType['email']) {
-		this.email = email;
-		return this;
-	}
+  public withEmail(email: PleaseRenameThisType['email']) {
+    this.email = email;
+    return this;
+  }
 }
 ```
 
