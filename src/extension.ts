@@ -41,11 +41,12 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function getSelectedTexts(editor: vscode.TextEditor): string[] {
-  const selectedTexts: string[] = [];
+  let selectedTexts: string[] = [];
 
   editor.selections.forEach(selection => {
     const text = editor.document.getText(selection);
-    selectedTexts.push(text);
+    const textsByNewLine = text.split("\n");
+    selectedTexts = [...textsByNewLine];
   });
 
   return selectedTexts;
@@ -53,12 +54,22 @@ function getSelectedTexts(editor: vscode.TextEditor): string[] {
 
 function createCodeSnippets(selectedTexts: string[]): string {
   const codeSnippets = selectedTexts.map(text => {
-    return `	public with${capitalizeFirstLetter(text)}(${text}) {
-		this.${text} = ${text};
+    const trimmedText = removeSemiColonIfHaving(text.trim());
+
+    return `	public with${capitalizeFirstLetter(trimmedText)}(${trimmedText}) {
+		this.${trimmedText} = ${trimmedText};
 		return this;
 	}`;
   });
   return codeSnippets.join("\n\n") + "\n";
+}
+
+function removeSemiColonIfHaving(str: string): string {
+  if (str.charAt(str.length - 1) === ";") {
+    return str.slice(0, -1);
+  }
+
+  return str;
 }
 
 function capitalizeFirstLetter(string: string) {
@@ -70,11 +81,7 @@ function createCodeSnippetsWithType(selectedTexts: string[]): string {
     let [variableName, typeName] = text.split(":");
 
     variableName = variableName.trim();
-    typeName = typeName.trim();
-
-    if (typeName.charAt(typeName.length - 1) === ";") {
-      typeName.slice(0, -1);
-    }
+    typeName = removeSemiColonIfHaving(typeName.trim());
 
     return `	public with${capitalizeFirstLetter(
       variableName
