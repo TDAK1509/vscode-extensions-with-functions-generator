@@ -44,7 +44,7 @@ class MyModelMock {
 }
 ```
 
-2. Without type (`Generate withFunctions` command)
+2. With type (`Generate withFunctions with types` command)
 
 ```ts
 class MyModelMock {
